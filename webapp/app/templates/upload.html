@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<div class="upload">
+	  <div class="header">
+	  	<p><a href="{{ url_for('index') }}"></a></p>
+  	  	<h1> Video 2 Text </h1>
+  	  </div>
+
+  	  <fieldset>
+  	  	<legend>Upload Video File</legend>
+		  <form action = "upload" method="post" enctype="multipart/form-data" name="upload_form">
+		    <input type="file" name="myfile">
+		    <button type="submit">Upload</button>
+		  </form>
+	  </fieldset>
+
+	  <div class="upload_succ">
+		  	<p>{{ status }}</p> 
+	  </div>
+
+	  {% if cap %}
+	  <fieldset class="text">
+		  <legend>Caption </legend>
+		  <div class="disp_cap">
+		  	   <form>
+			  
+			    <p><h1>{{ cap }}</h1></p>
+			  
+			  </form>
+		  </div>
+	  </fieldset>
+	  {% endif %}
+	  
+	  {% if tags %}
+	  <fieldset>
+	  	<legend>Tags </legend>
+		  <div class="disp_tags">
+		  	   <form>
+			  
+			    <p><h2>Tags :</h2> <h3>{{ tags }}</h3></p>
+			 
+			  </form>
+		  </div>
+	  </fieldset>
+	   {% endif %}
+	  
+  	</div>
+
+{% endblock %}

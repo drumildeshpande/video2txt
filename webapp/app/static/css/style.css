@@ -1,0 +1,141 @@
+body
+{
+	/*background: #b7b7b7;*/
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.header
+{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h1
+{
+	text-align: center;
+}
+
+.header a
+{
+	background: url(../images/home.png);
+	background-size: 100%;
+	width: 20px;
+	height: 20px;
+	float: left;
+	margin: 5px;
+}
+
+.home a
+{
+	text-decoration: none;
+	display: block;
+	border: 2px solid black;
+	color: black;
+	padding: 2px;
+}
+
+.home
+{
+	border: 2px solid black;
+	border-radius: 20px;
+	display: block;
+	width: 600px;
+	margin-right: auto;
+	margin-left: auto;
+	background: #00fffb;
+	min-height: 500px;
+}
+
+.upload
+{
+	border: 2px solid black;
+	border-radius: 20px;
+	display: block;
+	width: 600px;
+	margin-right: auto;
+	margin-left: auto;
+	background: #00fffb;
+	min-height: 500px;
+}
+
+.upload a
+{
+	text-decoration-style: none;
+}
+
+.upload form
+{
+	padding: 2px;
+}
+
+legend
+{
+	display: block;
+	padding-left: 2px;
+	padding-right: 2px;
+	border: none;
+}
+
+#get_tags
+{
+	margin-top: 30px;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+.upload_succ
+{
+	padding: 2px;
+}
+
+.disp_tags
+{
+	display: block;
+	border: 2px solid black;
+	border-radius: 20px;
+	padding: 2px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.disp_cap
+{
+	display: block;
+	border: 2px solid black;
+	border-radius: 20px;
+	padding: 2px;
+	left: 10px;
+	margin-right: 5px;
+}
+
+.upload p a
+{
+	text-decoration: none;
+	display: block;
+	border: 2px solid black;
+	color: black;
+	padding: 2px;
+}
+
+#disp_pic
+{
+	background: url(../images/video-to-text.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	width: 600px;
+	height: 700px;
+	border-radius: 20px;
+}
+
+.text legend
+{
+	font-weight: 900;
+}
+
+.text fieldset
+{
+	border: 2px solid black;
+	border-radius: 20px;
+}
