@@ -18,4 +18,10 @@ The imagenet data set can be used to pre train VGG-16 model and store the weight
 The weight can be reloded into the model for computation later. You can read more about VGG model [here](http://www.robots.ox.ac.uk/~vgg/research/very_deep/).
 The weight loading part is done using the vgg16.py file.
 
+## **Models**
 
+	### Model to generate Tags :
+	![](https://github.com/drumildeshpande/video2txt/blob/master/images/model_tags.jpg)
+
+	### Model to generate Caption :
+	![](https://github.com/drumildeshpande/video2txt/blob/master/images/model_cap.jpg)
