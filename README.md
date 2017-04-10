@@ -21,7 +21,7 @@ The weight loading part is done using the vgg16.py file.
 ## **Models**
 
 	### Model to generate Tags :
-	![](https://github.com/drumildeshpande/video2txt/blob/master/images/model_tags.jpg)
+	![model_tags](https://github.com/drumildeshpande/video2txt/blob/master/images/model_tags.jpg "Model Tags")
 
 	### Model to generate Caption :
-	![](https://github.com/drumildeshpande/video2txt/blob/master/images/model_cap.jpg)
+	![model_caption](https://github.com/drumildeshpande/video2txt/blob/master/images/model_cap.jpg "Model Caption")
