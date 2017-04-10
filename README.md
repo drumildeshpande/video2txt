@@ -5,7 +5,7 @@ The motivation for the project was the huge amounts of video data available on d
 But there is no real end to end system that can generate tags or captions for videos. 
 These tags and captions could be leveraged in building better recommnedation systems for video, video search, video summarization etc.
 
-## ** Pre processing and Data **
+## **Pre processing and Data**
 
 The data set used are:
 1) IageNet dataset - which contains 1.2 million images form 1000 classes.
