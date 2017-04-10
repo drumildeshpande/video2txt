@@ -9,7 +9,7 @@ These tags and captions could be leveraged in building better recommnedation sys
 
 The data set used are:
 1) IageNet dataset - which contains 1.2 million images form 1000 classes.
-The dataset can be found [here] (http://image-net.org/download-images).
+The dataset can be found [here](http://image-net.org/download-images).
 
 2) Youtube video dataset - which contains ~2k videos with multiple captions describing them.
 
