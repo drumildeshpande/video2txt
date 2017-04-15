@@ -22,14 +22,17 @@ Also, a vocab is created over all the clean captions present for the videos.
 
 ## **Models**
 
-1) ![Model for Tags](images/model_tags.jpg)
-2) ![Model for caption](images/model_cap.jpg)
+![Model for Tags](images/model_tags.jpg)
+
+
+
+![Model for caption](images/model_cap.jpg)
 
 ## **Training**
 
-    For generation of tags the pre-trained model is used to generate tags for the sampled frames. The output tags are the top 5-10 tags with highest probability amongst all the frames. It is possible to further train the Vgg model by setting the layers to be trainable and then training it on new data.
+For generation of tags the pre-trained model is used to generate tags for the sampled frames. The output tags are the top 5-10 tags with highest probability amongst all the frames. It is possible to further train the Vgg model by setting the layers to be trainable and then training it on new data.
 
-    For generation of captions features are extracted from the Fc7 layer of Vgg and fed into the lstm network. The lstm network is trained using captions represented as one hot encoding over the vocab created. You can use file test.py to do train the lstm. For training vgg modify and use the vgg.16 or caption1.py file.
+For generation of captions features are extracted from the Fc7 layer of Vgg and fed into the lstm network. The lstm network is trained using captions represented as one hot encoding over the vocab created. You can use file test.py to do train the lstm. For training vgg modify and use the vgg.16 or caption1.py file.
 
 ## **Testing**
 
