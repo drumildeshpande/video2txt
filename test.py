@@ -37,17 +37,18 @@ def pre_process(test_images):
     test = []
     for i in range(0,len(test_images)):
 	#print test_images[i]
-	vid_id = test_images[i].split("/")[3]
+	vid_id = test_images[i].split("/")[4]
 	#print vid_id
 	vid_id = vid_id.split(".")[0].split("_")[0]
 	test.append(vid_id)
 
     test = sorted(set(test))
-    print test
+    #print test
     for i in range(0,len(test)):
+	#print test[i]
     	for test_image in test_images:
 	    if(test[i] in test_image):
-		vid_id = test_image.split("/")[3]
+		vid_id = test_image.split("/")[4]
 		vid_id = vid_id.split(".")[0].split("_")[0]
 		if(test[i]==vid_id):
     	    	    img1 = imread(test_image, mode='RGB')
@@ -58,15 +59,15 @@ def pre_process(test_images):
 
 def load_labels(test_images, vocab_size, time_steps):
     true_y = []
-    desc_path = "./data/youtube/small_y2.npy"
+    desc_path = "./data/youtube/vid_captions.npy"
     vid_desc = np.load(desc_path)
     #print vid_desc
-    vocab_path = "./data/youtube/small_vocab2.npy"
+    vocab_path = "./data/youtube/vocab.npy"
     vocab = np.load(vocab_path)
     test = []
     for i in range(0,len(test_images)):
 	#print test_images[i]
-	vid_id = test_images[i].split("/")[3]
+	vid_id = test_images[i].split("/")[4]
 	#print vid_id
 	vid_id = vid_id.split(".")[0].split("_")[0]
 	test.append(vid_id)
@@ -135,8 +136,8 @@ def reshapeInput(comp_feats, time_steps):
 
     return np.asarray(x_ip)
 
-def get_word(embedding):
-    vocab_path = "./data/youtube/small_vocab2.npy"
+def get_word(embedding):a
+    vocab_path = "./data/youtube/vocab.npy"
     vocab = np.load(vocab_path)
     it = -1
     idx = np.argmax(embedding)
@@ -191,7 +192,7 @@ if __name__ == '__main__':
 
     #___________________________________Load Vocab________________________________________#    
 
-    vocab = np.load('./data/youtube/small_vocab2.npy')
+    vocab = np.load('./data/youtube/vocab.npy')
     print ('Length of current vocab is %d' % len(vocab.item()))
 
     #___________________________________Model Parameters________________________________________#
@@ -230,25 +231,44 @@ if __name__ == '__main__':
     images = pre_process(test_images)  
 
     vgg = vgg16(imgs, 'vgg16_weights.npz', sess)
-        
-    features = get_features(vgg,sess,images)
+    
+    print images.shape
+    it = 0
+    features = []
+    while (it+40) <= images.shape[0]:
+	img1 = images[it:it+40]
+	#print img1.shape
+	features.extend(get_features(vgg,sess,img1))
+	it+=40
+    
+    features = np.asarray(features)
+    print features.shape
+    #features = get_features(vgg,sess,images)
     comp_feats = comp_features(images,features)
 
-    x_train = reshapeInput(comp_feats, max_time_steps)
-    x_test = x_train
+    x_ = reshapeInput(comp_feats, max_time_steps)
+
+    print(x_.shape)
+
+    x_train = x_[:1000]
+    x_val = x_[1000:1400]
+    x_test = x_[1400:]
 
     train_images = load_data(sys.argv[1])
-    y_train = load_labels(test_images,vocab_size,max_time_steps)
+    y_ = load_labels(test_images,vocab_size,max_time_steps)
 
     #y_train = sequence.pad_sequences(y_train, max_time_steps)
+	
+    y_train = y_[:1000]
+    y_val = y_[1000:1400] 
+    y_test = y_[1400:]
 
-    y_test = y_train
 
-    print(len(x_train), 'train sequences')
-    print(x_train.shape, 'train shape')
+    print(x_train.shape, 'x_train shape')
+    print(x_train.shape, 'x_val shape')
 
-    print(len(y_train), 'train labels')
-    print((y_train.shape), 'train shape')
+    print((y_train.shape), 'y_train shape')
+    print((y_val.shape), 'y_val shape')
 
 
     #___________________________________Build Model________________________________________#
@@ -277,7 +297,7 @@ if __name__ == '__main__':
     print('Train...')
 
     tbcallback = TensorBoard(log_dir = './tmp', histogram_freq = 10, write_graph=True, write_images = False)
-    history = model.fit(x_train, y_train, batch_size=batch_size, nb_epoch=num_iters, callbacks=[tbcallback]) # ,validation_data=(x_test, y_test))
+    history = model.fit(x_train, y_train, batch_size=batch_size, nb_epoch=num_iters, validcation_data=(x_val,y_val), callbacks=[tbcallback]) # ,validation_data=(x_test, y_test))
     score, acc = model.evaluate(x_train, y_train, batch_size=batch_size)
     
     print('Test score:', score)
@@ -288,23 +308,23 @@ if __name__ == '__main__':
     #___________________________________Visualization________________________________________#
 
 
-    ''' plt.subplot(2,1,1)
-    print(history.history.keys())
-    plt.plot(history.history['acc'])
+    #print(history.history.keys())
+    plt.plot(history.history['acc'], label = 'Train Accuracy')
+    plt.plot(history.history['val_acc'], label = 'Val Accuracy')
     plt.title('Model Accuracy')
     plt.ylabel('Accuracy')
     plt.xlabel('Epochs')
-    # plt.legend()
+    plt.legend(loc='upper center', shadow=True)
+    plt.show()
 
-    plt.subplot(2,1,2)
-    print(history.history.keys())
-    plt.plot(history.history['loss'])
+    #print(history.history.keys())
+    plt.plot(history.history['loss'], label = 'Train Loss')
+    plt.plot(history.history['val_loss'], label = 'Val Loss')
     plt.title('Model Loss')
     plt.ylabel('Loss')
     plt.xlabel('Epochs')
-    #plt.legend() 
+    plt.legend(loc='upper center', shadow=True)
     plt.show()
-    '''
 
     #___________________________________Test Model________________________________________#
 
