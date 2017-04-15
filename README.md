@@ -22,9 +22,8 @@ Also, a vocab is created over all the clean captions present for the videos.
 
 ## **Training**
 
-	For generation of tags the pre-trained model is used to generate tags for the sampled frames. The output tags are the top 5-10 tags with highest probability amongst all the frames. It is possible to further train the Vgg model by setting the layers to be trainable and then training it on new data.
-	For generation of captions features are extracted from the Fc7 layer of Vgg and fed into the lstm network. The lstm network is trained using captions represented as one hot encoding over the vocab created.
-You can use file test.py to do train the lstm. For training vgg modify and use the vgg.16 or caption1.py file.
+For generation of tags the pre-trained model is used to generate tags for the sampled frames. The output tags are the top 5-10 tags with highest probability amongst all the frames. It is possible to further train the Vgg model by setting the layers to be trainable and then training it on new data.
+For generation of captions features are extracted from the Fc7 layer of Vgg and fed into the lstm network. The lstm network is trained using captions represented as one hot encoding over the vocab created. You can use file test.py to do train the lstm. For training vgg modify and use the vgg.16 or caption1.py file.
 
 ## **Testing**
 
@@ -36,12 +35,12 @@ The latency is about 30-60 seconds.
 
 ## **Demo and Presentation**
 
-	You can find a example video [here](https://www.youtube.com/watch?v=l2uLcy_FafA), and the demo of webapp for the video [here](https://www.youtube.com/watch?v=XFgfrWsTRxU).
+You can find a example video [here](https://www.youtube.com/watch?v=l2uLcy_FafA), and the demo of webapp for the video [here](https://www.youtube.com/watch?v=XFgfrWsTRxU).
 
-	You can also find the project presentation slides [here](https://www.goo.gl/sNZZZH).
+You can also find the project presentation slides [here](https://www.goo.gl/sNZZZH).
 
 ### **References**
 
-	1) Vgg-16 [link](http://www.robots.ox.ac.uk/~vgg/research/very_deep/).
-	2) Very Deep Convolutional Network for large scale image recognition [link](https://arxiv.org/pdf/1409.1556.pdf).
-	3) Show and Tell [link](https://arxiv.org/pdf/1411.4555.pdf).
+1) Vgg-16 [link](http://www.robots.ox.ac.uk/~vgg/research/very_deep/).
+2) Very Deep Convolutional Network for large scale image recognition [link](https://arxiv.org/pdf/1409.1556.pdf).
+3) Show and Tell [link](https://arxiv.org/pdf/1411.4555.pdf).
