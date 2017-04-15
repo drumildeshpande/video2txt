@@ -19,13 +19,7 @@ The weight can be reloded into the model for computation later. You can read mor
 The weight loading part is done using the vgg16.py file.
 Also, a vocab is created over all the clean captions present for the videos.
 
-## **Models**
 
-	Model to generate Tags :
-	![model tags](/images/model_tags.jpg)
-
-	Model to generate Caption :
-	![model caption](/images/model_cap.jpg)
 
 ## **Training**
 	For generation of tags the pre-trained model is used to generate tags for the sampled frames. The output tags are the top 5-10 tags with highest probability amongst all the frames. It is possible to further train the Vgg model by setting the layers to be trainable and then training it on new data.
