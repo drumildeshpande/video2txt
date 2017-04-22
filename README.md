@@ -48,6 +48,17 @@ You can find a example video [here](https://www.youtube.com/watch?v=l2uLcy_FafA)
 
 You can also find the project presentation slides [here](https://www.goo.gl/sNZZZH).
 
+## **Results**
+
+![Accuracy](images/accuracy.jpg)
+
+1. The above graph shows the accuracy achieved by the fine tuned model.
+
+![Loss vs #Nodes](images/loss_vs_nodes.jpg)
+
+2. The above graph shows the capacity of the model to learn number of words on a test example VS the depth of the RNN part of the model.
+
+
 ### **References**
 
 1) Vgg-16 [link](http://www.robots.ox.ac.uk/~vgg/research/very_deep/).
